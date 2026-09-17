@@ -3,6 +3,7 @@ import loginRouter from "./app/routes/loginRouter.js";
 import registerRouter from "./app/routes/registerRouter.js";
 import userRouter from "./app/routes/userRouter.js";
 import "dotenv/config";
+import { errorHarndler } from "./app/utils/errorHandeling.js";
 
 const app = express();
 
@@ -21,6 +22,8 @@ app.use((_, res) => {
 		message: "Route not found",
 	});
 });
+
+app.use(errorHarndler);
 
 app.listen(port, () => {
 	console.log(`Auth server running on http://localhost:${port}`);
