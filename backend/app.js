@@ -1,6 +1,7 @@
 import express from "express";
 import loginRouter from "./app/routes/loginRouter.js";
 import registerRouter from "./app/routes/registerRouter.js";
+import userRouter from "./app/routes/userRouter.js";
 import "dotenv/config";
 
 const app = express();
@@ -12,6 +13,7 @@ app.use(express.json());
 
 app.use("/register", registerRouter);
 app.use("/login", loginRouter);
+app.use("/user", userRouter);
 
 app.use((_, res) => {
 	res.status(404).json({
