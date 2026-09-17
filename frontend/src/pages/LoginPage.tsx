@@ -34,9 +34,9 @@ export default function LoginPage() {
 	return (
 		<div className="loginPage">
 			<h1>Log In</h1>
-			<input type="text" placeholder="email" ref={emailRef} />
-			<input type="text" placeholder="password" ref={passwordRef} />
-			<button type="button" onClick={handleClick}>
+			<input type="text" className="inputField" placeholder="email" ref={emailRef} />
+			<input type="text" className="inputField" placeholder="password" ref={passwordRef} />
+			<button type="button" className="inputButton" onClick={handleClick}>
 				send
 			</button>
 			<NavLink to="/register">

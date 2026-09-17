@@ -2,4 +2,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 15px;
+}
+
+.inputField {
+    height: 30px;
+    border: solid;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.inputButton {
+    height: 30px;
+    border: solid;
+    border-radius: 20px;
+    text-align: center;
 }

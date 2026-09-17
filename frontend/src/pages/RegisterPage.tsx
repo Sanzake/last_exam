@@ -34,10 +34,10 @@ export default function LoginPage() {
 	return (
 		<div className="registerPage">
             <h1>SignUp</h1>
-			<input type="text" placeholder="username" ref={usernameRef} />
-			<input type="text" placeholder="email" ref={emailRef} />
-			<input type="text" placeholder="password" ref={passwordRef} />
-			<button type="button" onClick={handleClick}>send</button>
+			<input type="text" className="inputField" placeholder="username" ref={usernameRef} />
+			<input type="text" className="inputField" placeholder="email" ref={emailRef} />
+			<input type="text" className="inputField" placeholder="password" ref={passwordRef} />
+			<button type="button" className="inputButton" onClick={handleClick}>send</button>
 		</div>
 	);
 }
