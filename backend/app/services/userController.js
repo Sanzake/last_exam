@@ -4,7 +4,6 @@ import { compareToken } from "../utils/token.js";
 
 export const userController = async (req, res) => {
 	const { authorization } = req.headers;
-	console.log("user controller", authorization);
 
 	const email = compareToken(authorization);
 	if (!email) throw new AppError("Invalid token", 401);

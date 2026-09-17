@@ -3,13 +3,14 @@ import loginRouter from "./app/routes/loginRouter.js";
 import registerRouter from "./app/routes/registerRouter.js";
 import userRouter from "./app/routes/userRouter.js";
 import "dotenv/config";
+import cors from "cors";
 import { errorHarndler } from "./app/utils/errorHandeling.js";
 
 const app = express();
 
 const port = process.env.PORT || 8765;
 
-// app.use(cors({}));
+app.use(cors());
 app.use(express.json());
 
 app.use("/register", registerRouter);
