@@ -1,16 +1,17 @@
 import express from "express";
+import loginRouter from "./app/routes/loginRouter.js";
 import registerRouter from "./app/routes/registerRouter.js";
 import "dotenv/config";
 
 const app = express();
 
-const port = 8765;
+const port = process.env.PORT || 8765;
 
 // app.use(cors({}));
 app.use(express.json());
 
 app.use("/register", registerRouter);
-// app.use("/login")
+app.use("/login", loginRouter);
 
 app.use((_, res) => {
 	res.status(404).json({

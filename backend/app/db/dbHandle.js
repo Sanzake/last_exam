@@ -8,13 +8,7 @@ export const createUserDAL = async (userData) => {
 };
 
 export const findUserByEmailDAL = async (email) => {
-	console.log("log findUserByEmail", email);
 	const normalizedEmail = email.toLowerCase();
 	const currentUser = await users.findOne({ email: normalizedEmail });
 	return currentUser;
-};
-
-export const getUsersDAL = async () => {
-	const usersList = await users.find().toArray();
-	return usersList;
 };
