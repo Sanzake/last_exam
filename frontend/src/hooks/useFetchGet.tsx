@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 
-export default function useFetchGet(url: string, headers?: object) {
-    const [data, setData] = useState(null)
+export default function useFetchGet<T>(url: string, headers?: object) {
+    const [data, setData] = useState<T | null>(null)
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(false)
     
 
+    // biome-ignore lint/correctness/useExhaustiveDependencies: <with every render he get header from local storage and this cause refetch and rerender>
     useEffect(() => {
         if (!url) {
             setData(null)

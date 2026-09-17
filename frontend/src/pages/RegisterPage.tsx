@@ -6,13 +6,13 @@ import useFetch from "../hooks/useFetchPost";
 const url = "http://localhost:8765/register";
 
 export default function LoginPage() {
-	const { execute, data, error, loading } = useFetch(url);
+	const { execute, error, loading } = useFetch(url);
 
 	const navigate = useNavigate();
 
-	const usernameRef = useRef(null);
-	const emailRef = useRef(null);
-	const passwordRef = useRef(null);
+	const usernameRef = useRef<HTMLInputElement>(null);
+	const emailRef = useRef<HTMLInputElement>(null);
+	const passwordRef = useRef<HTMLInputElement>(null);
 
 	const handleClick = async () => {
 		const body = {
@@ -21,16 +21,19 @@ export default function LoginPage() {
 			password: passwordRef.current?.value,
 		};
 		const res = await execute(body);
-		console.log("registerPage", res);
-        if (data) navigate("/login")
+        
+        if (res.success === false) return
+        navigate("/login")
         return res
 	};
 
     if (error) return <>{error}</>;
 	if (loading) return <>Loading...</>;
 
+
 	return (
 		<div className="registerPage">
+            <h1>SignUp</h1>
 			<input type="text" placeholder="username" ref={usernameRef} />
 			<input type="text" placeholder="email" ref={emailRef} />
 			<input type="text" placeholder="password" ref={passwordRef} />

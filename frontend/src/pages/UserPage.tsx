@@ -1,30 +1,34 @@
+import "./UserPage.css";
+import { useNavigate } from "react-router";
+import LogoutButton from "../components/LogoutButton/LogoutButton";
+import useFetchGet from "../hooks/useFetchGet";
 
-import { useNavigate } from 'react-router';
-import useFetchGet from '../hooks/useFetchGet'
-import LogoutButton from '../components/LogoutButton/LogoutButton';
-
-
-const url = "http://localhost:8765/user"
+const url = "http://localhost:8765/user";
 
 export default function UserPage() {
-    const auth_token = localStorage.getItem("auth_token")
+	const auth_token = localStorage.getItem("auth_token");
 
-    const header = {"Authorization": auth_token}
+	const header = { Authorization: auth_token };
 
-    const {data, error, loading} = useFetchGet(url, header)
-    const navigate = useNavigate()
+    type Data = {
+        username: string,
+        email: string
+    }
 
-    if (!auth_token) navigate("/login")
-    if (error) return <>{error}</>;
+	const { data, error, loading } = useFetchGet<Data>(url, header);
+	const navigate = useNavigate();
+
+	if (!auth_token) navigate("/login");
+	if (error) return <>{error}</>;
 	if (loading) return <>Loading...</>;
-    if (!data) return <>nodata</>
+	if (!data) return <>nodata</>;
 
-    return (
-        <div>
-            <p>Profile</p>
-            <p>{data.username}</p>
-            <p>{data.email}</p>
-            <LogoutButton />
-        </div>
-    )
+	return (
+		<div className="userPage">
+			<h1>Profile</h1>
+			<p>Username - {data.username}</p>
+			<p>Email - {data.email}</p>
+			<LogoutButton />
+		</div>
+	);
 }
