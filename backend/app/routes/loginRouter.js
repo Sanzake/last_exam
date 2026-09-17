@@ -1,8 +1,9 @@
 import { Router } from "express";
 import { loginController } from "../services/loginController.js";
+import { asyncWrapper } from "../utils/asyncWrapper.js";
 
-const router = Router()
+const router = Router();
 
-router.post("/", loginController)
+router.post("/", asyncWrapper(loginController));
 
-export default router
+export default router;
